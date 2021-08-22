@@ -10,7 +10,7 @@ from sqlalchemy import create_engine
 # GET / admin/api/2020-10/customers/count.json
 #counting customers, api has 250 records in one page, in the future if we will have more than 250 records, in order to launch loop
 JSON_count = requests.get(
-    'https://65f2fcb22dc9962942bbc18e74eaed90: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@yo-dokan.myshopify.com/admin/api/2020-10/customers/count.json')
+    ' https://username:password@store-name.myshopify.com/admin/api/{API-version}/count.json')
 content = json.dumps(JSON_count.json(), indent=4, sort_keys=True)
 nested = json.loads(content)
 JSON_count2 = nested.get("count")
@@ -18,11 +18,10 @@ n = math.ceil(JSON_count2/250)
 
 while True:
     df = pd.DataFrame()
-    # URL: https: // 65f2fcb22dc9962942bbc18e74eaed90: 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@yo-dokan.myshopify.com/admin/api/2020-10/orders.json
 
 
     Jsondata = requests.get(
-        'https://65f2fcb22dc9962942bbc18e74eaed90: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@yo-dokan.myshopify.com/admin/api/2020-10/customers.json')
+        ' https://username:password@store-name.myshopify.com/admin/api/{API-version}/customers.json')
     #gives data
     if 'json' in Jsondata.headers.get('Content-Type'):
         content = json.dumps(Jsondata.json(), indent=4, sort_keys=True)#as json is not in simplified form so, dump and load
@@ -40,7 +39,7 @@ while True:
     print(df.head())
 
     engine = create_engine(
-        "postgresql://postgres:A.bhandari1@localhost:5433/tresap_shopify")
+        "postgresql://postgres:username:password@hostname/database")
 
     # df.to_sql('products', engine, if_exists='replace')
 
