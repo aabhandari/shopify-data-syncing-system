@@ -5,7 +5,7 @@ Each e-commerce store has suppliers, product categories/collections, orders, and
 
 Steps to run this:
 1. Clone the repository
-2. In main.py:
-   (a) In the variables, JSON_count and Jsondata, add the username, password, and API version from your Shopify account
+2. In main.py:\
+   (a) In the variables, JSON_count and Jsondata, add the username, password, and API version from your Shopify account\
    (b) Add the username, password, hostname, and database name from your PostgreSQL account
 3. Run main.py
